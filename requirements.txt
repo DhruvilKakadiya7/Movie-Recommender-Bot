@@ -1,7 +1,7 @@
 pandas
 discord.py
 discord
-dotenv
+python-dotenv
 art
 flask
 scikit-learn
