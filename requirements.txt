@@ -1,5 +1,5 @@
 pandas
-discord
+discord==2.2.2
 python-dotenv
 art
 flask
