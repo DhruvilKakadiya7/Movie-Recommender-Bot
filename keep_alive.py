@@ -8,5 +8,4 @@ def home():
     return "Hello. I am alive!"
 
 def keep_alive():
-  if __name__ == "__main__":
     app.run(debug=True)
