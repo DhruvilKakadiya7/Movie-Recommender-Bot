@@ -9,7 +9,7 @@ import discord
 import random
 from keep_alive import keep_alive
 
-TOKEN = 'MTAxNzA5NDA5NjQ2NjIxOTA3MQ.G3bAgn.oAHFX3H4RnNeOkDXuCUhB5lSv9A5MISFzPn6PU'
+
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
