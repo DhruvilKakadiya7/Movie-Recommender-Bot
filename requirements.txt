@@ -1,5 +1,4 @@
 pandas
-discord.py
 discord
 python-dotenv
 art
