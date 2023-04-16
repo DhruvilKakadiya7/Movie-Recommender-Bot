@@ -13,9 +13,8 @@ import os
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
-intents = discord.Intents.default()
-intents.message_content = True
-client = discord.Client(intents=intents)
+
+client = discord.Client()
 
 #Reading The Dataset
 df = pd.read_csv('movie.csv')
