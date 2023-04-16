@@ -7,5 +7,6 @@ app = Flask('')
 def home():
     return "Hello. I am alive!"
 
-if __name__ == "__main__":
+def keep_alive():
+  if __name__ == "__main__":
     app.run(debug=True)
