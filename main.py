@@ -7,10 +7,7 @@ import discord
 import random
 from keep_alive import keep_alive
 
-
-intents = discord.Intents.default()
-intents.message_content = True
-client = discord.Client(intents=intents)
+client = discord.Client()
 
 df = pd.read_csv('movie.csv')
 # df['title']=df['title'].apply(lambda x: x.lower())
