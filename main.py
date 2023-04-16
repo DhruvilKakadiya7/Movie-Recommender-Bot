@@ -1,4 +1,6 @@
 
+
+#Importing ML Modules
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
@@ -6,20 +8,30 @@ import art
 import discord
 import random
 from keep_alive import keep_alive
+from dotenv import load_dotenv
+import os
 
-client = discord.Client()
+load_dotenv()
+TOKEN = os.getenv("TOKEN")
+intents = discord.Intents.default()
+intents.message_content = True
+client = discord.Client(intents=intents)
 
+#Reading The Dataset
 df = pd.read_csv('movie.csv')
 # df['title']=df['title'].apply(lambda x: x.lower())
 # print(df)
 features = ['title','keywords','cast','genres','director']
 
+#Returns features of a particular Movie row
 def combFeatures(row):
     return row['title']+" "+row['keywords']+" "+row['cast']+" "+row['genres']+" "+row['director']
 
+#Returns title from the index of the movie
 def getTitle(index):
     return df[df.index == index]["title"].values[0]
 
+#Returns index from the title of the movie and if not found returns -1
 def getIndex(title):
     data = pd.read_csv('movie.csv')
     data['title'] = data['title'].apply(lambda x: x.lower())
@@ -39,6 +51,8 @@ def getIndex(title):
     return ok
 
 
+
+#Removing Null/Empty Values from the data set and creating single feature column
 for feature in features:
     df[feature] = df[feature].fillna('')
 df["combinedFeatures"] = df.apply(combFeatures,axis=1)
@@ -46,6 +60,8 @@ df["combinedFeatures"] = df.apply(combFeatures,axis=1)
 # print(df["combinedFeatures"])
 
 
+
+#Plotting similarity using count matrix
 cv = CountVectorizer()
 countMatrix = cv.fit_transform(df["combinedFeatures"])
 similarityElement = cosine_similarity(countMatrix)
