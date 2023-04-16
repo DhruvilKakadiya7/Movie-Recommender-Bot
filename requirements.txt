@@ -1,0 +1,6 @@
+pandas
+discprd
+dotenv
+art
+flask
+scikit-learn
